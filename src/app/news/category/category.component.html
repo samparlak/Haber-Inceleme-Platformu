@@ -1,0 +1,7 @@
+
+
+<select class="form-control" name="category" id="category" >
+  <option value="Tümü">Tümü</option>
+  <option *ngFor="let category of categories" value="{{category.code}}"> {{category.description}} </option>
+</select>
+

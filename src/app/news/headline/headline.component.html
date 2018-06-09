@@ -1,0 +1,17 @@
+<input type="search" class="form-control mt-2" placeholder="Haber başlıklarında ara">
+<table class="table mt-2">
+  <thead style="font-weight:bold;">
+    <td>Tarih</td>
+    <td  (click)="getSort()" >Saat</td>
+    <td>Başlık</td>
+    <td>Kategori</td>
+  </thead>
+  <tbody *ngFor="let headline of headlines;let i=index" style="font-size:14px;">
+    <td> {{headline.date | date: 'dd/MM/yyyy'}} </td>
+    <td> {{headline.date | date: 'HH:mm' }} </td>
+    <td>
+      <a (click)="getPassive(i)" [id]="i" href="#">{{headline.headline}} --{{i}}</a>
+    </td>
+    <td> {{headline.category}} </td>
+  </tbody>
+</table>
