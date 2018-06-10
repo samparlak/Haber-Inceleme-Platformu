@@ -11,7 +11,7 @@ import { CategoryService } from './news/services/category.service';
 import { ContentService } from './news/services/content.service';
 import { HeadlineService } from './news/services/headline.service';
 import { OrderModule } from 'ngx-order-pipe';
-
+import {FormsModule} from '@angular/forms'
 
 
 
@@ -25,7 +25,9 @@ import { OrderModule } from 'ngx-order-pipe';
   imports: [
     BrowserModule,
     HttpClientModule,
-    OrderModule
+    OrderModule,
+    FormsModule
+
        
   ],
   providers: [CategoryService,ContentService,HeadlineService],

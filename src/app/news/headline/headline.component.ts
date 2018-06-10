@@ -50,4 +50,8 @@ export class HeadlineComponent implements OnInit {
     }
   }
 
+  onCategory(){
+    
+  }
+
 }

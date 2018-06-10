@@ -1,10 +1,12 @@
+
+<app-category (click)="onCategory()" ></app-category>
 <input type="search" class="form-control mt-2" placeholder="Haber başlıklarında ara">
-<table class="table table-bordered mt-2">
+<table class="table  mt-2">
   <thead style="font-weight:bold ">
     <td>Tarih</td>
     <td style="cursor:pointer" [class.active]="order === 'date'" (click)="setOrder()" (mouseover)="hover=true" (mouseleave)="hover=false">
       Saat
-      <span>
+      <span class="ml-2">
         <span *ngIf="!default" [ngStyle]="{color: hover==true  ? 'lightgray' : 'transparent' }">▲</span>
         <span [hidden]="!default">
           <span [hidden]="!reverse">▼</span>
@@ -17,10 +19,10 @@
   </thead>
   <tbody *ngFor="let headline of headlines | orderBy: order:reverse:'case-insensitive' ;let i=index" style="font-size:12px;">
     <td> {{headline.date | date: 'dd/MM/yyyy'}} </td>
-    <td> {{headline.date | date: 'HH:mm' }} </td>
+    <td> {{headline.date | date: 'HH:mm'  }} </td>
     <td>
-      <a (click)="getPassive(i)" [id]="i" href="#">{{headline.headline}} --{{i}}</a>
+      <a (click)="getPassive(i)" [id]="i" href="#">{{headline.headline}}</a>
     </td>
-    <td> {{headline.category}} </td>
+    <td> {{headline.category }} </td>
   </tbody>
 </table>
