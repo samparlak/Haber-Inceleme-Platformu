@@ -3,6 +3,7 @@ import { OrderPipe } from "ngx-order-pipe";
 import { Headline } from "../../models/headline.model";
 import { HeadlineService } from "../../services/headline.service";
 import { CategoryService } from "../../services/category.service";
+import { Category } from "../../models/category.model";
 
 @Component({
   selector: "app-headline",
@@ -11,8 +12,10 @@ import { CategoryService } from "../../services/category.service";
 })
 export class HeadlineComponent implements OnInit {
   headlines: Headline[];
+  categories: Category[];
   order: string = "date";
   filtered:String="";
+  searched:String="";
   onSelected: boolean = false; 
   reverse: boolean = true;
   default: boolean = false;
@@ -28,6 +31,14 @@ export class HeadlineComponent implements OnInit {
     this.headlineService.getHeadlines().subscribe(
       res => {
         this.headlines = res;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    this.categoryService.getCategory().subscribe(
+      res => {
+        this.categories = res;
       },
       error => {
         console.log(error);

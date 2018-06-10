@@ -13,6 +13,8 @@ import { CategoryFilterPipe } from './pipes/category-filter.pipe';
 import { CategoryService } from './services/category.service';
 import { ContentService } from './services/content.service';
 import { HeadlineService } from './services/headline.service';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
+
 
 
 
@@ -24,7 +26,8 @@ import { HeadlineService } from './services/headline.service';
     CategoryComponent,
     HeadlineComponent,
     ContentComponent,
-    CategoryFilterPipe
+    CategoryFilterPipe,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
