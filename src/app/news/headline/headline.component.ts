@@ -1,6 +1,7 @@
-import { Component, OnInit} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { HeadlineService } from "../services/headline.service";
 import { Headline } from "../models/headline.model";
+import { OrderPipe } from "ngx-order-pipe";
 
 @Component({
   selector: "app-headline",
@@ -8,11 +9,17 @@ import { Headline } from "../models/headline.model";
   styleUrls: ["./headline.component.css"]
 })
 export class HeadlineComponent implements OnInit {
-
   headlines: Headline[];
-  onSelected:boolean=false;
+  order: string = "date";
+  onSelected: boolean = false; 
+  reverse: boolean = true;
+  default: boolean = false;
+  hover:boolean=false;
 
-  constructor(private headlineService: HeadlineService) {}
+  constructor(
+    private headlineService: HeadlineService,
+    private orderPipe: OrderPipe
+  ) {}
 
   ngOnInit() {
     this.headlineService.getHeadlines().subscribe(
@@ -25,15 +32,22 @@ export class HeadlineComponent implements OnInit {
     );
   }
 
-  getPassive(i:string){
-    this.onSelected=true;
-    document.getElementById(i).style.textDecoration='line-through';
-    document.getElementById(i).style.color='lightgray';   
+  getPassive(i: string) {
+    this.onSelected = true;
+    document.getElementById(i).style.textDecoration = "line-through";
+    document.getElementById(i).style.color = "lightgray";
   }
 
-  getSort(){
-    /* this.headlines.sort(function(a, b){return (a.date.getDate() - b.date.getDate())}); */
-    this.headlines.sort();
+  setOrder() {
+    //reverse=true,default=false
+    if (this.default == false) {
+      this.default = true;
+      this.reverse = !this.reverse;
+    } else if (this.default == true && this.reverse == false) {
+      this.reverse = !this.reverse;
+    } else if (this.default == true && this.reverse == true) {
+      this.default = false;
+    }
   }
 
 }

@@ -10,7 +10,7 @@ import { ContentComponent } from './news/content/content.component';
 import { CategoryService } from './news/services/category.service';
 import { ContentService } from './news/services/content.service';
 import { HeadlineService } from './news/services/headline.service';
-
+import { OrderModule } from 'ngx-order-pipe';
 
 
 
@@ -24,7 +24,9 @@ import { HeadlineService } from './news/services/headline.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule   
+    HttpClientModule,
+    OrderModule
+       
   ],
   providers: [CategoryService,ContentService,HeadlineService],
   bootstrap: [AppComponent]
