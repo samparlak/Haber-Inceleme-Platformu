@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { CategoryService } from "../services/category.service";
-import { Category } from "../models/category.model";
 import { OrderPipe } from "ngx-order-pipe";
+import { Category } from "../../models/category.model";
+import { CategoryService } from "../../services/category.service";
 
 @Component({
   selector: "app-category",
@@ -26,6 +26,9 @@ export class CategoryComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  getSelectOnList(){
     this.categoryService.setCategoryFilter(this.onSelected);
   }
 

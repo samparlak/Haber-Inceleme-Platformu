@@ -7,11 +7,14 @@ import { AppComponent } from './app.component';
 import { CategoryComponent } from './news/category/category.component';
 import { HeadlineComponent } from './news/headline/headline.component';
 import { ContentComponent } from './news/content/content.component';
-import { CategoryService } from './news/services/category.service';
-import { ContentService } from './news/services/content.service';
-import { HeadlineService } from './news/services/headline.service';
 import { OrderModule } from 'ngx-order-pipe';
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
+import { CategoryFilterPipe } from './pipes/category-filter.pipe';
+import { CategoryService } from './services/category.service';
+import { ContentService } from './services/content.service';
+import { HeadlineService } from './services/headline.service';
+
+
 
 
 
@@ -20,7 +23,8 @@ import {FormsModule} from '@angular/forms'
     AppComponent,
     CategoryComponent,
     HeadlineComponent,
-    ContentComponent
+    ContentComponent,
+    CategoryFilterPipe
   ],
   imports: [
     BrowserModule,

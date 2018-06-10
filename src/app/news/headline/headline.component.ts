@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { HeadlineService } from "../services/headline.service";
-import { Headline } from "../models/headline.model";
 import { OrderPipe } from "ngx-order-pipe";
+import { Headline } from "../../models/headline.model";
+import { HeadlineService } from "../../services/headline.service";
+import { CategoryService } from "../../services/category.service";
 
 @Component({
   selector: "app-headline",
@@ -11,6 +12,7 @@ import { OrderPipe } from "ngx-order-pipe";
 export class HeadlineComponent implements OnInit {
   headlines: Headline[];
   order: string = "date";
+  filtered:String="";
   onSelected: boolean = false; 
   reverse: boolean = true;
   default: boolean = false;
@@ -18,7 +20,8 @@ export class HeadlineComponent implements OnInit {
 
   constructor(
     private headlineService: HeadlineService,
-    private orderPipe: OrderPipe
+    private orderPipe: OrderPipe,
+    private categoryService:CategoryService
   ) {}
 
   ngOnInit() {
@@ -51,7 +54,7 @@ export class HeadlineComponent implements OnInit {
   }
 
   onCategory(){
-    
+    this.filtered=this.categoryService.getCategoryFilter();
   }
 
 }
