@@ -16,7 +16,7 @@ import { Content } from "../../models/content.model";
 })
 export class HeadlineComponent implements OnInit {
   headlines: Headline[];
-  content:Content;
+  content:String;
   contentHeadline:String;
   modalRef: BsModalRef;
   order: string = "date";
@@ -70,9 +70,10 @@ export class HeadlineComponent implements OnInit {
     this.contentHeadline=headline.headline;
     const id=headline.id;
     this.contentService.getContents(id).subscribe((res)=>{
-      this.content=res;
+      this.content=res.content;
       console.log("Tıklanan haber başlığına ait veriler:")
       console.log(res);
+
     },
     (error)=>{
       console.error("İçerik görüntülenemedi.")

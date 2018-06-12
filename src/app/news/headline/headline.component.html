@@ -34,8 +34,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <p>{{content.content}}</p>
+  <div  class="modal-body" [innerHTML]=" content | MarkdownToHtml" >
   </div>
 </ng-template>
 

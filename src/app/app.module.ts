@@ -16,7 +16,7 @@ import { HeadlineService } from './services/headline.service';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
-
+import {MarkdownToHtmlModule} from 'markdown-to-html-pipe';
 
 
 
@@ -34,10 +34,11 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HttpClientModule,
     OrderModule,
     FormsModule,
-    ModalModule.forRoot()   
+    ModalModule.forRoot(),
+    MarkdownToHtmlModule   
   ],
   exports: [ ModalModule],
   providers: [CategoryService,ContentService,HeadlineService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

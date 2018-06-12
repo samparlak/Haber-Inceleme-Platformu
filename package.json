@@ -23,6 +23,8 @@
     "@angular/router": "^5.2.0",
     "bootstrap": "^4.1.1",
     "core-js": "^2.4.1",
+    "markdown-to-html-pipe": "^1.2.4",
+    "marked": "^0.4.0",
     "ngx-bootstrap": "^3.0.0",
     "ngx-order-pipe": "^2.0.1",
     "rxjs": "^5.5.6",
