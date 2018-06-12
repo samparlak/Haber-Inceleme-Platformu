@@ -4,10 +4,9 @@ import { Headline } from "../../models/headline.model";
 import { HeadlineService } from "../../services/headline.service";
 import { CategoryService } from "../../services/category.service";
 
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 import { ContentService } from "../../services/content.service";
 import { Content } from "../../models/content.model";
-
 
 @Component({
   selector: "app-headline",
@@ -16,24 +15,22 @@ import { Content } from "../../models/content.model";
 })
 export class HeadlineComponent implements OnInit {
   headlines: Headline[];
-  content:String;
-  contentHeadline:String;
+  content: String;
+  contentHeadline: String;
   modalRef: BsModalRef;
   order: string = "date";
-  filtered:String="";
-  searched:String="";
-  onSelected: boolean = false; 
+  filtered: String = "";
+  searched: String = "";
   reverse: boolean = true;
   default: boolean = false;
-  hover:boolean=false;
-  
+  hover: boolean = false;
 
   constructor(
     private headlineService: HeadlineService,
     private orderPipe: OrderPipe,
-    private categoryService:CategoryService,
+    private categoryService: CategoryService,
     private modalService: BsModalService,
-    private contentService:ContentService
+    private contentService: ContentService
   ) {}
 
   ngOnInit() {
@@ -44,41 +41,46 @@ export class HeadlineComponent implements OnInit {
         console.log(res);
       },
       error => {
-        console.error("Web servisten veriyi alamadı.")
+        console.error("Web servisten veriyi alamadı.");
         console.error(error);
       }
     );
-    
-   /*  this.categoryService.getCategory().subscribe(
-      res => {
-        this.categories = res;
-      },
-      error => {
-        console.log(error);
+  }
+
+  rememberMe() {
+    for (var i = 0; i < 30; i++) {
+      const id = i.toString();
+      const valid: string = localStorage.getItem(id);
+      if (valid == "true") {
+        document.getElementById(id).style.textDecoration = "line-through";
+        document.getElementById(id).style.color = "lightgray";
+        console.log("id : "+id);
+        console.log("Seçildi : "+valid);
       }
-    ); */
+    }
   }
 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template); 
+    this.modalRef = this.modalService.show(template);
   }
 
-  getPassiveAndShowContent(i: string,headline:Headline) {
-    this.onSelected = true;
+  getPassiveAndShowContent(i: string, headline: Headline) {
     document.getElementById(i).style.textDecoration = "line-through";
     document.getElementById(i).style.color = "lightgray";
-    this.contentHeadline=headline.headline;
-    const id=headline.id;
-    this.contentService.getContents(id).subscribe((res)=>{
-      this.content=res.content;
-      console.log("Tıklanan haber başlığına ait veriler:")
-      console.log(res);
-
-    },
-    (error)=>{
-      console.error("İçerik görüntülenemedi.")
-      console.error(error);
-    })
+    localStorage.setItem(i, "true");
+    this.contentHeadline = headline.headline;
+    const id = headline.id;
+    this.contentService.getContents(id).subscribe(
+      res => {
+        this.content = res.content;
+        console.log("Tıklanan haber başlığına ait veriler:");
+        console.log(res);
+      },
+      error => {
+        console.error("İçerik görüntülenemedi.");
+        console.error(error);
+      }
+    );
   }
 
   setOrder() {
@@ -93,8 +95,7 @@ export class HeadlineComponent implements OnInit {
     }
   }
 
-  onCategory(){
-    this.filtered=this.categoryService.getCategoryFilter();
+  onCategory() {
+    this.filtered = this.categoryService.getCategoryFilter();
   }
-
 }
