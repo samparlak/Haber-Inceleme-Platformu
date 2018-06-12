@@ -17,6 +17,7 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {MarkdownToHtmlModule} from 'markdown-to-html-pipe';
+import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
 
 
 
@@ -28,6 +29,7 @@ import {MarkdownToHtmlModule} from 'markdown-to-html-pipe';
     ContentComponent,
     CategoryFilterPipe,
     SearchFilterPipe,
+    NoSanitizePipe,
   ],
   imports: [
     BrowserModule,
