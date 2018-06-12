@@ -15,7 +15,7 @@ import { ContentService } from './services/content.service';
 import { HeadlineService } from './services/headline.service';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
-
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 
@@ -27,16 +27,16 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     HeadlineComponent,
     ContentComponent,
     CategoryFilterPipe,
-    SearchFilterPipe
+    SearchFilterPipe,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     OrderModule,
-    FormsModule
-
-       
+    FormsModule,
+    ModalModule.forRoot()   
   ],
+  exports: [ ModalModule],
   providers: [CategoryService,ContentService,HeadlineService],
   bootstrap: [AppComponent]
 })

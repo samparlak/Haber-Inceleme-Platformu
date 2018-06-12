@@ -1,5 +1,5 @@
 <app-category (click)="onCategory()"></app-category>
-<input type="search" class="form-control mt-2" placeholder="Haber başlıklarında ara" [(ngModel)]="searched" >
+<input type="search" class="form-control mt-2" placeholder="Haber başlıklarında ara" [(ngModel)]="searched">
 <table class="table  mt-2">
   <thead style="font-weight:bold ">
     <td>Tarih</td>
@@ -21,8 +21,23 @@
     <td> {{headline.date | date: 'dd/MM/yyyy'}} </td>
     <td> {{headline.date | date: 'HH:mm' }} </td>
     <td>
-      <a (click)="getPassive(i)" [id]="i" href="#">{{headline.headline}}</a>
+      <a (click)="getPassiveAndShowContent(i,headline)"  (click)="openModal(template)" [id]="i" href="#">{{headline.headline}}</a>
     </td>
     <td> {{headline.category}} </td>
   </tbody>
 </table>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title"> {{contentHeadline}} </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>{{content.content}}</p>
+  </div>
+</ng-template>
+
+
+
