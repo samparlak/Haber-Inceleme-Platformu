@@ -1,8 +1,7 @@
-<form (click)="getSelectOnList()" >
-  <select  class="form-control" name="category-list" [ngModel]="'all'"  [(ngModel)]="onSelected">
-    <option  value="all">Tümü</option>
-    <option *ngFor="let category of categories | orderBy: 'description':false:'case-insensitive' " 
-    [value]="category.code">
+<form (click)="getSelectOnList()">
+  <select class="form-control" name="category-list" [ngModel]="'all'" [(ngModel)]="onSelected">
+    <option value="all">Tümü</option>
+    <option *ngFor="let category of categories | orderBy:'description':false:'case-insensitive'" [value]="category.code">
       {{category.description}}</option>
   </select>
 </form>

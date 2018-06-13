@@ -3,11 +3,10 @@
 <div style="text-align: center">
   <button class="mt-2  btn btn-sm btn-outline-success " (click)="rememberMe()">Beni hatırla</button>
 </div>
-
 <table class="table  mt-2">
   <thead style="font-weight:bold ">
     <td>Tarih</td>
-    <td style="cursor:pointer" [class.active]="order === 'date'" (click)="setOrder()" (mouseover)="hover=true" (mouseleave)="hover=false">
+    <td style="cursor:pointer" (click)="setOrder()" (mouseover)="hover=true" (mouseleave)="hover=false">
       Saat
       <span class="ml-2">
         <span *ngIf="!default" [ngStyle]="{color: hover==true  ? 'lightgray' : 'transparent' }">▲</span>
@@ -20,17 +19,17 @@
     <td>Başlık</td>
     <td>Kategori</td>
   </thead>
-  <tbody *ngFor="let headline of headlines | orderBy: order:reverse:'case-insensitive'
+  <tbody *ngFor="let headline of headlines | orderBy: 'date':reverse:'case-insensitive'
    | categoryFilter:filtered:'category' | searchFilter:searched:'headline' ;let i=index">
     <td> {{headline.date | date: 'dd/MM/yyyy'}} </td>
     <td> {{headline.date | date: 'HH:mm' }} </td>
     <td>
+      <!-- headlines elemanlarına ulaşabilmek için indexleri id olarak kimliklendirildi. -->
       <a (click)="getPassiveAndShowContent(i,headline)" (click)="openModal(template)" [id]="i" href="#">{{headline.headline}}</a>
     </td>
     <td> {{headline.category}} </td>
   </tbody>
 </table>
-
 <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title"> {{contentHeadline}} </h4>
@@ -38,6 +37,6 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body" [innerHTML]=" content | MarkdownToHtml | noSanitize">
-  </div>
+  <!-- Markdown formatında gelen içeriği convert etmek ve güvenli yapmak için pipe'lar kullanıldı. -->
+  <div class="modal-body" [innerHTML]=" content | MarkdownToHtml | noSanitize"></div>
 </ng-template>
