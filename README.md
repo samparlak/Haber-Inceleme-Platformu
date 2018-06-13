@@ -15,3 +15,7 @@ Angular5 , Typescript , Bootstrap4
 - Uygulamayı import edin ya da indirin.
 - Uygulama dizinine giderek kütüphaneleri belirttiğim şekilde konsoldan yükleyin.
 - Kütüphaneler yüklendikten sonra konsola `ng serve --open` yazarak uygulamayı başlatın.
+
+## Link
+
+Projeyi önizlemek için : [Youtube](https://www.youtube.com/watch?v=ZgyByyPlCtA&feature=youtu.be)
