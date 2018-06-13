@@ -4,20 +4,23 @@ import { HttpClientModule} from '@angular/common/http'
 
 
 import { AppComponent } from './app.component';
-import { CategoryComponent } from './news/category/category.component';
-import { HeadlineComponent } from './news/headline/headline.component';
-import { ContentComponent } from './news/content/content.component';
+
 import { OrderModule } from 'ngx-order-pipe';
 import {FormsModule} from '@angular/forms';
-import { CategoryFilterPipe } from './pipes/category-filter.pipe';
-import { CategoryService } from './services/category.service';
-import { ContentService } from './services/content.service';
-import { HeadlineService } from './services/headline.service';
-import { SearchFilterPipe } from './pipes/search-filter.pipe';
+
 
 import { ModalModule } from 'ngx-bootstrap/modal';
 import {MarkdownToHtmlModule} from 'markdown-to-html-pipe';
-import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
+
+
+import { CategoryFilterPipe } from './shared/category-filter.pipe';
+import { SearchFilterPipe } from './shared/search-filter.pipe';
+import { NoSanitizePipe } from './shared/no-sanitize.pipe';
+import { CategoryComponent } from './category/category.component';
+import { HeadlineComponent } from './headline/headline.component';
+import { CategoryService } from './category/shared/category.service';
+import { ContentService } from './shared/content.service';
+import { HeadlineService } from './headline/shared/headline.service';
 
 
 
@@ -26,7 +29,6 @@ import { NoSanitizePipe } from './pipes/no-sanitize.pipe';
     AppComponent,
     CategoryComponent,
     HeadlineComponent,
-    ContentComponent,
     CategoryFilterPipe,
     SearchFilterPipe,
     NoSanitizePipe,

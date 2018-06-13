@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Content } from '../models/content.model';
+
 import { HttpClient } from '@angular/common/http';
+import { Content } from './content.model';
 
 @Injectable()
 export class ContentService {

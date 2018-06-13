@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Headline } from '../models/headline.model';
+import { Headline } from './headline.model';
+
 
 @Injectable()
 export class HeadlineService {

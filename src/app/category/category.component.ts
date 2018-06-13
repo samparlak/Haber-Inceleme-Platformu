@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { OrderPipe } from "ngx-order-pipe";
-import { Category } from "../../models/category.model";
-import { CategoryService } from "../../services/category.service";
+import { Category } from "./shared/category.model";
+import { CategoryService } from "./shared/category.service";
+
 
 @Component({
   selector: "app-category",

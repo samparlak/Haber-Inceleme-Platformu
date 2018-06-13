@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Category } from '../models/category.model';
 
+import { Category } from './category.model';
 
 @Injectable()
 export class CategoryService {
-
   categoryFilter:String;
 
   constructor(private httpClient:HttpClient) { }
@@ -21,5 +20,4 @@ export class CategoryService {
   getCategoryFilter(){
     return this.categoryFilter;
   }
-
 }

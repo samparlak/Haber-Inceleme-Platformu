@@ -1,12 +1,12 @@
 import { Component, OnInit, TemplateRef } from "@angular/core";
 import { OrderPipe } from "ngx-order-pipe";
-import { Headline } from "../../models/headline.model";
-import { HeadlineService } from "../../services/headline.service";
-import { CategoryService } from "../../services/category.service";
+
 
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
-import { ContentService } from "../../services/content.service";
-import { Content } from "../../models/content.model";
+import { Headline } from "./shared/headline.model";
+import { HeadlineService } from "./shared/headline.service";
+import { CategoryService } from "../category/shared/category.service";
+import { ContentService } from "../shared/content.service";
 
 @Component({
   selector: "app-headline",
